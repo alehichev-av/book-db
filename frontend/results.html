@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Display</title>
+    <style>
+        body {
+          margin: 20px;
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          font-size: 18px;
+          color: #444;
+          padding: 0 10px;
+        }
+        h1, h2, h3 { line-height: 1.2; }
+            .search-form-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .book {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .book-titlebox {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .book-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .delete-button {
+            background-color: darkred;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book Collection</h1> <h2><a href="/index">Go back</a></h2>
+    {% if books %}
+    <div class="book-list">
+        {% for book in books %}
+        <div class="book">
+            <div class="book-titlebox">
+                <span class="book-title"><a href="book/{{ book.id }}">{{ book.title }}</a></span>
+                <form method="POST" action="/delete/{{ book.id }}" style="margin: 0;">
+                    <button type="submit" class="delete-button">Delete</button>
+                    <input type="hidden" name="redirect" value="{{ request.url }}">
+                </form>
+            </div>
+            <div class="book-year">Year: {{ book.year }}</div>
+            <div class="book-genre">Genre: {{ book.genre }}</div>
+            <div class="book-rating">Rating: {{ book.rating }}</div>
+            <div class="book-description">{{ book.description }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h2>No books found</h2>
+    {% endif %}
+</body>
+</html>
