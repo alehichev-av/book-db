@@ -18,11 +18,13 @@ psycopg2
   - With no password or empty password
   - App reserves database name `library`
 - Available port 8080
+- Python module `venv` probably belongs here.
 
 ## Deployment
 
 - Deploy Postgresql database mentioned above
-- `$ pip install -r requirements.txt`
-- `$ python server.py`
-- Open in web browser `http://localhost:8080`
+- Create venv: `$ python -m venv venv`
+- Install python requirements: `$ pip install -r requirements.txt`
+- Launch the app: `$ python server.py`
+- Open in web browser: `http://localhost:8080`
 
