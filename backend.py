@@ -261,6 +261,7 @@ def drop_database():
     with conn.cursor() as cur:
         conn.autocommit = True
         cur.execute("drop database " + databasename)
+    conn.close()
 
 
 def main():
