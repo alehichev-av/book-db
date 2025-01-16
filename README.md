@@ -25,6 +25,7 @@ psycopg2
 - Deploy Postgresql database mentioned above
 - Create venv: `$ python -m venv venv`
 - Install python requirements: `$ pip install -r requirements.txt`
+- Initialize the database: `$ python backend.py`
 - Launch the app: `$ python server.py`
 - Open in web browser: `http://localhost:8080`
 
