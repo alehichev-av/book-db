@@ -260,7 +260,7 @@ def drop_database():
     conn = psycopg2.connect(dbname="postgres", user=databaseuser, password=databasepassword, host=databasehost)
     with conn.cursor() as cur:
         conn.autocommit = True
-        cur.execute("drop database " + databasename)
+        cur.execute("drop database if exists " + databasename)
     conn.close()
 
 
