@@ -135,7 +135,7 @@ def getLibrary():
 def addBook(title, year, genre, description):
     """Adds a book to the database. All parametrs are str; year - int.
     If there are no existing records of given genre, they are created."""
-    print(description)
+    # print(description)
     conn = connect()
     cur = conn.cursor()
     if getRecords("Genres", ["name"], [genre]) == []:

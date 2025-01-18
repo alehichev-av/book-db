@@ -127,14 +127,14 @@ def get_book(book_id):
         "score": rat,
         "text": txt if txt else "No text"
     }
-    print(getRecords("Books", ["book_id"], [book_id,])[0])
+    # print(getRecords("Books", ["book_id"], [book_id,])[0])
     book = getRecords("Books", ["book_id"], [book_id,])
     if (len(book) != 1):
         flash("Invalid book id", 'error')
         return redirect(url_for("index"))
     book = unpack_apply(book_dict, book[0])
     reviews = map(lambda x: unpack_apply(review_dict, x), getRecords("Reviews", ["book_id"], [book_id,]))
-    print(book, reviews)
+    # print(book, reviews)
     return render_template("book.html", reviews=reviews, book=book)
 
 
